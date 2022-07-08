@@ -1,1 +1,1 @@
-web: gunicorn asiantravels.wsgi
+web: gunicorn asiantravels
