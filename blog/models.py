@@ -19,7 +19,7 @@ class BlogPost (models.Model):
     dateTime = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     hearts = models.ManyToManyField(
-        User, related_name='blog_likes', blank=True)
+    User, related_name='blog_likes', blank=True)
 
 class Meta:
     ordering = ['-created_on']
@@ -41,6 +41,7 @@ class Comment (models.Model):
     content = models.TextField()
     blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
     dateTime = models.DateTimeField(default=now)
 
